@@ -47,7 +47,9 @@ public class Tests_TicketTypeRequestWrapper {
     @MethodSource("TicketTypeRequestWrapperArguments")
     void Test_TicketTypeRequestWrapper_GetTotalTicketPrice(
             TicketTypeRequestWrapper ticketTypeRequestWrapper, 
-            Integer expectedCost, Integer requiredSeats) {
+            Integer expectedCost, 
+            Integer requiredSeats
+    ) {
         Assertions.assertEquals(expectedCost, ticketTypeRequestWrapper.GetTotalTicketPrice());
     }
     
@@ -55,8 +57,10 @@ public class Tests_TicketTypeRequestWrapper {
     @MethodSource("TicketTypeRequestWrapperArguments")
     void Test_TicketTypeRequestWrapper_GetRequiredSeats(
             TicketTypeRequestWrapper ticketTypeRequestWrapper, 
-            Integer expectedCost, Integer requiredSeats) {
-        Assertions.assertEquals(requiredSeats, ticketTypeRequestWrapper.GetTotalRequiredSeats(), () -> "Expected");
+            Integer expectedCost, 
+            Integer requiredSeats
+    ) {
+        Assertions.assertEquals(requiredSeats, ticketTypeRequestWrapper.GetTotalRequiredSeats());
     }
     
 }
