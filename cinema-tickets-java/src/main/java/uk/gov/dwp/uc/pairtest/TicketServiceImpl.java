@@ -10,7 +10,13 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public void purchaseTickets(Long accountId, TicketTypeRequest... ticketTypeRequests) throws InvalidPurchaseException {
-
+        // Create TicketTypeRequest Wrapper Objects
+        // Perform Validation Requests
+        // If successful
+            // Reserve Seats
+            // Reserve Tickets
+        // If unsuccessful
+            // Return InvalidPurchaseException
     }
 
 }
