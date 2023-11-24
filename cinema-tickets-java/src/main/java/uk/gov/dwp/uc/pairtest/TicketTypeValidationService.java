@@ -4,10 +4,12 @@
  */
 package uk.gov.dwp.uc.pairtest;
 
+import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequestWrapper;
+
 /**
  *
  * @author James Thompson
  */
 public interface TicketTypeValidationService {
-    public boolean validate();
+    public boolean validate(TicketTypeRequestWrapper ticketTypeRequestWrapper);
 }
