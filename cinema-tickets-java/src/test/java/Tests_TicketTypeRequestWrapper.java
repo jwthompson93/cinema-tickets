@@ -15,31 +15,31 @@ public class Tests_TicketTypeRequestWrapper {
         return Stream.of(
             Arguments.of(
                 new TicketTypeRequestWrapper(),
-                0, 0),
+                0, 0, 0),
             Arguments.of(
                 new TicketTypeRequestWrapper(
                     new TicketTypeRequest(TicketTypeRequest.Type.ADULT, 5)
                 ),
-                100, 5),
+                100, 5, 5),
             Arguments.of(
                 new TicketTypeRequestWrapper(
                     new TicketTypeRequest(TicketTypeRequest.Type.ADULT, 5),
                     new TicketTypeRequest(TicketTypeRequest.Type.CHILD, 5)
                 ),
-                150, 10),
+                150, 10, 10),
             Arguments.of(
                 new TicketTypeRequestWrapper(
                     new TicketTypeRequest(TicketTypeRequest.Type.ADULT, 5),
                     new TicketTypeRequest(TicketTypeRequest.Type.CHILD, 5),
                     new TicketTypeRequest(TicketTypeRequest.Type.INFANT, 5)
                 ),
-                150, 10),
+                150, 10, 15),
             Arguments.of(
                 new TicketTypeRequestWrapper(
                     new TicketTypeRequest(TicketTypeRequest.Type.ADULT, 15),
                     new TicketTypeRequest(TicketTypeRequest.Type.INFANT, 5)
                 ),
-                300, 15)
+                300, 15, 20)
         );
     }
     
@@ -48,7 +48,8 @@ public class Tests_TicketTypeRequestWrapper {
     void Test_TicketTypeRequestWrapper_GetTotalTicketPrice(
             TicketTypeRequestWrapper ticketTypeRequestWrapper, 
             Integer expectedCost, 
-            Integer requiredSeats
+            Integer expectedSeats,
+            Integer expectedTickets
     ) {
         Assertions.assertEquals(expectedCost, ticketTypeRequestWrapper.GetTotalTicketPrice());
     }
@@ -58,9 +59,20 @@ public class Tests_TicketTypeRequestWrapper {
     void Test_TicketTypeRequestWrapper_GetRequiredSeats(
             TicketTypeRequestWrapper ticketTypeRequestWrapper, 
             Integer expectedCost, 
-            Integer requiredSeats
+            Integer expectedSeats,
+            Integer expectedTickets
     ) {
-        Assertions.assertEquals(requiredSeats, ticketTypeRequestWrapper.GetTotalRequiredSeats());
+        Assertions.assertEquals(expectedSeats, ticketTypeRequestWrapper.GetTotalRequiredSeats());
     }
     
+    @ParameterizedTest(name = "Expected: {1}, Actual: {2}")
+    @MethodSource("TicketTypeRequestWrapperArguments")
+    void Test_TicketTypeRequestWrapper_GetTotalTickets(
+            TicketTypeRequestWrapper ticketTypeRequestWrapper, 
+            Integer expectedCost, 
+            Integer expectedSeats,
+            Integer expectedTickets
+    ) {
+        Assertions.assertEquals(expectedTickets, ticketTypeRequestWrapper.GetTotalTickets());
+    }
 }
