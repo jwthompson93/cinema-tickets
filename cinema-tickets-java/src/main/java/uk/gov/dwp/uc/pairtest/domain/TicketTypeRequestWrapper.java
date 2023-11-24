@@ -17,6 +17,13 @@ public class TicketTypeRequestWrapper {
         this.ticketTypeRequests = ticketTypeRequests;
     }
     
+    public int GetTotalTickets() {
+        return Arrays
+                .stream(ticketTypeRequests)
+                .mapToInt((value) -> value.getNoOfTickets())
+                .sum();
+    }
+    
     public int GetTotalTicketPrice() {
         return Arrays
                 .stream(ticketTypeRequests)
