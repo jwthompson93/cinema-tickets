@@ -11,6 +11,39 @@ import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequestWrapper;
 @DisplayName("A Test Class for testing methods in the TicketTypeRequestWrapper class")
 public class Tests_TicketTypeRequestWrapper {
     
+    @ParameterizedTest(name = "Expected: {1}, Actual: {2}")
+    @MethodSource("TicketTypeRequestWrapperArguments")
+    void Test_GetTotalTicketPrice(
+            TicketTypeRequestWrapper ticketTypeRequestWrapper, 
+            Integer expectedCost, 
+            Integer expectedSeats,
+            Integer expectedTickets
+    ) {
+        Assertions.assertEquals(expectedCost, ticketTypeRequestWrapper.GetTotalTicketPrice());
+    }
+    
+    @ParameterizedTest(name = "Expected: {1}, Actual: {2}")
+    @MethodSource("TicketTypeRequestWrapperArguments")
+    void Test_GetRequiredSeats(
+            TicketTypeRequestWrapper ticketTypeRequestWrapper, 
+            Integer expectedCost, 
+            Integer expectedSeats,
+            Integer expectedTickets
+    ) {
+        Assertions.assertEquals(expectedSeats, ticketTypeRequestWrapper.GetTotalRequiredSeats());
+    }
+    
+    @ParameterizedTest(name = "Expected: {1}, Actual: {2}")
+    @MethodSource("TicketTypeRequestWrapperArguments")
+    void Test_GetTotalTickets(
+            TicketTypeRequestWrapper ticketTypeRequestWrapper, 
+            Integer expectedCost, 
+            Integer expectedSeats,
+            Integer expectedTickets
+    ) {
+        Assertions.assertEquals(expectedTickets, ticketTypeRequestWrapper.GetTotalTickets());
+    }
+    
     static Stream<Arguments> TicketTypeRequestWrapperArguments() {
         return Stream.of(
             Arguments.of(
@@ -41,38 +74,5 @@ public class Tests_TicketTypeRequestWrapper {
                 ),
                 300, 15, 20)
         );
-    }
-    
-    @ParameterizedTest(name = "Expected: {1}, Actual: {2}")
-    @MethodSource("TicketTypeRequestWrapperArguments")
-    void Test_TicketTypeRequestWrapper_GetTotalTicketPrice(
-            TicketTypeRequestWrapper ticketTypeRequestWrapper, 
-            Integer expectedCost, 
-            Integer expectedSeats,
-            Integer expectedTickets
-    ) {
-        Assertions.assertEquals(expectedCost, ticketTypeRequestWrapper.GetTotalTicketPrice());
-    }
-    
-    @ParameterizedTest(name = "Expected: {1}, Actual: {2}")
-    @MethodSource("TicketTypeRequestWrapperArguments")
-    void Test_TicketTypeRequestWrapper_GetRequiredSeats(
-            TicketTypeRequestWrapper ticketTypeRequestWrapper, 
-            Integer expectedCost, 
-            Integer expectedSeats,
-            Integer expectedTickets
-    ) {
-        Assertions.assertEquals(expectedSeats, ticketTypeRequestWrapper.GetTotalRequiredSeats());
-    }
-    
-    @ParameterizedTest(name = "Expected: {1}, Actual: {2}")
-    @MethodSource("TicketTypeRequestWrapperArguments")
-    void Test_TicketTypeRequestWrapper_GetTotalTickets(
-            TicketTypeRequestWrapper ticketTypeRequestWrapper, 
-            Integer expectedCost, 
-            Integer expectedSeats,
-            Integer expectedTickets
-    ) {
-        Assertions.assertEquals(expectedTickets, ticketTypeRequestWrapper.GetTotalTickets());
     }
 }
