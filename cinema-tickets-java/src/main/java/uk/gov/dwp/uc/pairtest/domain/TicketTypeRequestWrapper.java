@@ -5,39 +5,49 @@
 package uk.gov.dwp.uc.pairtest.domain;
 
 import java.util.Arrays;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  *
  * @author James Thompson
  */
 public class TicketTypeRequestWrapper {
-    private TicketTypeRequest[] ticketTypeRequests;
+    private Map<TicketTypeRequest.Type, TicketTypeRequest> ticketTypeRequestMap;
     
     public TicketTypeRequestWrapper(TicketTypeRequest... ticketTypeRequests) {
-        this.ticketTypeRequests = ticketTypeRequests;
+        ticketTypeRequestMap = 
+                Arrays
+                .stream(ticketTypeRequests)
+                .collect(Collectors.toMap(TicketTypeRequest::getTicketType, Function.identity()));
+    }
+    
+    public Map<TicketTypeRequest.Type, TicketTypeRequest> getTicketTypeRequestMap() {
+        return ticketTypeRequestMap;
     }
     
     public int GetTotalTickets() {
-        return Arrays
-                .stream(ticketTypeRequests)
-                .mapToInt((value) -> value.getNoOfTickets())
+        return ticketTypeRequestMap.entrySet()
+                .stream()
+                .mapToInt((request) -> request.getValue().getNoOfTickets())
                 .sum();
     }
     
     public int GetTotalTicketPrice() {
-        return Arrays
-                .stream(ticketTypeRequests)
-                .mapToInt((value) -> 
-                        value.getTicketType().cost * value.getNoOfTickets())
+        return ticketTypeRequestMap.entrySet()
+                .stream()
+                .mapToInt((request) -> 
+                        request.getKey().cost * request.getValue().getNoOfTickets())
                 .sum();
     }
     
     public int GetTotalRequiredSeats() {
-        return Arrays
-                .stream(ticketTypeRequests)
+        return ticketTypeRequestMap.entrySet()
+                .stream()
                 .filter((request) -> 
-                        request.getTicketType() != TicketTypeRequest.Type.INFANT)
-                .mapToInt((request) -> request.getNoOfTickets())
+                        request.getKey() != TicketTypeRequest.Type.INFANT)
+                .mapToInt((request) -> request.getValue().getNoOfTickets())
                 .sum();
     }
 }
