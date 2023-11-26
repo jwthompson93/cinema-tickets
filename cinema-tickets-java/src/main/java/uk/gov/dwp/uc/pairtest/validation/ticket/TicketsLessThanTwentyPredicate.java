@@ -4,7 +4,6 @@
  */
 package uk.gov.dwp.uc.pairtest.validation.ticket;
 
-import java.util.function.Predicate;
 import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequestWrapper;
 import uk.gov.dwp.uc.pairtest.validation.AbstractTicketTypeRequestWrapperPredicate;
 

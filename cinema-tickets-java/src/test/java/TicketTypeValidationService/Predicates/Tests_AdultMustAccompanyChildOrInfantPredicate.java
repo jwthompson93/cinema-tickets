@@ -1,6 +1,7 @@
 package TicketTypeValidationService.Predicates;
 
 
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,12 +13,18 @@ import uk.gov.dwp.uc.pairtest.validation.ticket.AdultMustAccompanyChildOrInfantP
 
 public class Tests_AdultMustAccompanyChildOrInfantPredicate {
     
+    private Predicate<TicketTypeRequestWrapper> predicate;
+    
+    public Tests_AdultMustAccompanyChildOrInfantPredicate() {
+        predicate = new AdultMustAccompanyChildOrInfantPredicate();
+    }
+    
     @ParameterizedTest(name = "Expected: {1}, Actual: {2}")
     @MethodSource("Tests_AdultMustAccompanyChildOrInfantPredicate_PassesSuccessfully_Arguments")
     void Tests_AdultMustAccompanyChildOrInfantPredicate_PassesSuccessfully(
             TicketTypeRequestWrapper ticketTypeRequestWrapper) {
         Assertions.assertTrue(
-                new AdultMustAccompanyChildOrInfantPredicate().test(ticketTypeRequestWrapper)
+                predicate.test(ticketTypeRequestWrapper)
         );
     }
     
@@ -47,7 +54,7 @@ public class Tests_AdultMustAccompanyChildOrInfantPredicate {
     void Tests_AdultMustAccompanyChildOrInfantPredicate_ThrowInvalidPurchaseException(
             TicketTypeRequestWrapper ticketTypeRequestWrapper) {
         Assertions.assertThrows(InvalidPurchaseException.class, () -> {
-            new AdultMustAccompanyChildOrInfantPredicate().test(ticketTypeRequestWrapper);
+            predicate.test(ticketTypeRequestWrapper);
         });
     }
     
