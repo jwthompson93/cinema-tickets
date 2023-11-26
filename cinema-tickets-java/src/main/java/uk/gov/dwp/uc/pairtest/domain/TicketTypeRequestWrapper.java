@@ -30,7 +30,9 @@ public class TicketTypeRequestWrapper {
     public int GetTotalTickets() {
         return ticketTypeRequestMap.entrySet()
                 .stream()
-                .mapToInt((request) -> request.getValue().getNoOfTickets())
+                .mapToInt((request) -> 
+                        request.getValue().getNoOfTickets()
+                )
                 .sum();
     }
     
@@ -38,7 +40,8 @@ public class TicketTypeRequestWrapper {
         return ticketTypeRequestMap.entrySet()
                 .stream()
                 .mapToInt((request) -> 
-                        request.getKey().cost * request.getValue().getNoOfTickets())
+                        request.getKey().cost * request.getValue().getNoOfTickets()
+                )
                 .sum();
     }
     
@@ -46,8 +49,11 @@ public class TicketTypeRequestWrapper {
         return ticketTypeRequestMap.entrySet()
                 .stream()
                 .filter((request) -> 
-                        request.getKey() != TicketTypeRequest.Type.INFANT)
-                .mapToInt((request) -> request.getValue().getNoOfTickets())
+                        request.getKey() != TicketTypeRequest.Type.INFANT
+                )
+                .mapToInt((request) -> 
+                        request.getValue().getNoOfTickets()
+                )
                 .sum();
     }
 }

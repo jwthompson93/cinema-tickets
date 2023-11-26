@@ -13,7 +13,10 @@ import uk.gov.dwp.uc.pairtest.exception.InvalidPurchaseException;
  * @author James Thompson
  */
 public abstract class AbstractTicketTypeRequestWrapperPredicate implements Predicate<TicketTypeRequestWrapper> {
-    protected boolean validate(TicketTypeRequestWrapper ticketTypeRequestWrapper, String errorMessage) {
+    
+    protected boolean validate(
+        TicketTypeRequestWrapper ticketTypeRequestWrapper, String errorMessage
+    ) {
         if(condition(ticketTypeRequestWrapper)) {
             return true;
         }

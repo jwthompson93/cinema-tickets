@@ -1,26 +1,27 @@
+package TicketTypeValidationService.Predicates;
+
 
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest;
 import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequestWrapper;
 import uk.gov.dwp.uc.pairtest.exception.InvalidPurchaseException;
 import uk.gov.dwp.uc.pairtest.validation.ticket.AdultMustAccompanyChildOrInfantPredicate;
 
-public class Tests_TicketTypeValidationService {
+public class Tests_InfantsMustNotOutnumberAdultsPredicate {
     
     @ParameterizedTest(name = "Expected: {1}, Actual: {2}")
-    @MethodSource("Test_AdultMustAccompanyChildOrInfantPredicate_PassesSuccessfully_Arguments")
-    void Test_AdultMustAccompanyChildOrInfantPredicate_PassesSuccessfully(
+    @MethodSource("Tests_InfantsMustNotOutnumberAdultsPredicate_PassesSuccessfully_Arguments")
+    void Tests_InfantsMustNotOutnumberAdultsPredicate_PassesSuccessfully(
             TicketTypeRequestWrapper ticketTypeRequestWrapper) {
         Assertions.assertTrue(
                 new AdultMustAccompanyChildOrInfantPredicate().test(ticketTypeRequestWrapper)
         );
     }
     
-    static Stream<TicketTypeRequestWrapper> Test_AdultMustAccompanyChildOrInfantPredicate_PassesSuccessfully_Arguments() {
+    static Stream<TicketTypeRequestWrapper> Tests_InfantsMustNotOutnumberAdultsPredicate_PassesSuccessfully_Arguments() {
         return Stream.of(
             new TicketTypeRequestWrapper(
                 new TicketTypeRequest(TicketTypeRequest.Type.ADULT, 5)
@@ -42,28 +43,25 @@ public class Tests_TicketTypeValidationService {
     }
     
     @ParameterizedTest(name = "Expected: {1}, Actual: {2}")
-    @MethodSource("Test_AdultMustAccompanyChildOrInfantPredicate_ThrowInvalidPurchaseException_Arguments")
-    void Test_AdultMustAccompanyChildOrInfantPredicate_ThrowInvalidPurchaseException(
+    @MethodSource("Tests_InfantsMustNotOutnumberAdultsPredicate_ThrowInvalidPurchaseException_Arguments")
+    void Tests_InfantsMustNotOutnumberAdultsPredicate_ThrowInvalidPurchaseException(
             TicketTypeRequestWrapper ticketTypeRequestWrapper) {
         Assertions.assertThrows(InvalidPurchaseException.class, () -> {
             new AdultMustAccompanyChildOrInfantPredicate().test(ticketTypeRequestWrapper);
         });
     }
     
-    static Stream<TicketTypeRequestWrapper> Test_AdultMustAccompanyChildOrInfantPredicate_ThrowInvalidPurchaseException_Arguments() {
+    static Stream<TicketTypeRequestWrapper> Tests_InfantsMustNotOutnumberAdultsPredicate_ThrowInvalidPurchaseException_Arguments() {
         return Stream.of(
             new TicketTypeRequestWrapper(),
             new TicketTypeRequestWrapper(
-                new TicketTypeRequest(TicketTypeRequest.Type.ADULT, 5),
                 new TicketTypeRequest(TicketTypeRequest.Type.CHILD, 5)
             ),
             new TicketTypeRequestWrapper(
-                new TicketTypeRequest(TicketTypeRequest.Type.ADULT, 5),
-                new TicketTypeRequest(TicketTypeRequest.Type.CHILD, 5),
                 new TicketTypeRequest(TicketTypeRequest.Type.INFANT, 5)
             ),
             new TicketTypeRequestWrapper(
-                new TicketTypeRequest(TicketTypeRequest.Type.ADULT, 15),
+                new TicketTypeRequest(TicketTypeRequest.Type.CHILD, 10),
                 new TicketTypeRequest(TicketTypeRequest.Type.INFANT, 5)
             )
         );

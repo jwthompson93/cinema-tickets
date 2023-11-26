@@ -1,3 +1,5 @@
+package TicketTypeRequestWrapper;
+
 
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
