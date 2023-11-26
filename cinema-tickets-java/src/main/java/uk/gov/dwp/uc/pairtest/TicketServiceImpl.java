@@ -11,9 +11,19 @@ public class TicketServiceImpl implements TicketService {
     /**
      * Should only have private methods other than the one below.
      */
-    private TicketTypeValidationService ticketTypeValidationService;
-    private TicketPaymentService ticketPaymentService;
-    private SeatReservationService seatReservationService;
+    private final TicketTypeValidationService ticketTypeValidationService;
+    private final TicketPaymentService ticketPaymentService;
+    private final SeatReservationService seatReservationService;
+    
+    public TicketServiceImpl(
+            TicketTypeValidationService ticketTypeValidationService, 
+            TicketPaymentService ticketPaymentService, 
+            SeatReservationService seatReservationService
+    ) {
+        this.ticketTypeValidationService = ticketTypeValidationService;
+        this.ticketPaymentService = ticketPaymentService;
+        this.seatReservationService = seatReservationService;
+    }
     
     @Override
     public void purchaseTickets(Long accountId, TicketTypeRequest... ticketTypeRequests) throws InvalidPurchaseException {
@@ -24,11 +34,11 @@ public class TicketServiceImpl implements TicketService {
         // Create TicketTypeRequest Wrapper Object
         TicketTypeRequestWrapper ticketTypeRequestWrapper = new TicketTypeRequestWrapper(ticketTypeRequests);
         
-        // Perform Validation Requests
+        // Perform Validation. Throws InvalidPurchaseException if any of the business rules are failed
         ticketTypeValidationService.validate(ticketTypeRequestWrapper);
-        // Reserve Tickets
+        // Reserves Tickets
         ticketPaymentService.makePayment(accountId, ticketTypeRequestWrapper.GetTotalTicketPrice());
-        // Reserve Seats
+        // Reserves Seats
         seatReservationService.reserveSeat(accountId, ticketTypeRequestWrapper.GetTotalRequiredSeats());
     }
 
