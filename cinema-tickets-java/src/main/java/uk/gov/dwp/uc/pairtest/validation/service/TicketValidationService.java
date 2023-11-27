@@ -10,6 +10,6 @@ import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequestWrapper;
  *
  * @author James Thompson
  */
-public interface TicketTypeValidationService {
+public interface TicketValidationService {
     public boolean validate(TicketTypeRequestWrapper ticketTypeRequestWrapper);
 }

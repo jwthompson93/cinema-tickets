@@ -12,33 +12,22 @@ import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequestWrapper;
  *
  * @author James Thompson
  */
-public class TicketsLessThanTwentyPredicate_TestCases {
+public class AtLeastOneTicketSubmittedPredicate_TestCases {
     public static Stream<TicketTypeRequestWrapper> PassesSuccessfully_TestCases() {
         return Stream.of(
             new TicketTypeRequestWrapper(
                 1L,
-                new TicketTypeRequest(TicketTypeRequest.Type.ADULT, 20)
-            ),
-            new TicketTypeRequestWrapper(
-                1L,
-                new TicketTypeRequest(TicketTypeRequest.Type.ADULT, 10),
-                new TicketTypeRequest(TicketTypeRequest.Type.CHILD, 5),
-                new TicketTypeRequest(TicketTypeRequest.Type.INFANT, 5)
+                new TicketTypeRequest(TicketTypeRequest.Type.ADULT, 1)
             )
         );
     }
     
     public static Stream<TicketTypeRequestWrapper> ThrowInvalidPurchaseException_TestCases() {
         return Stream.of(
+            new TicketTypeRequestWrapper(1L),
             new TicketTypeRequestWrapper(
                 1L,
-                new TicketTypeRequest(TicketTypeRequest.Type.ADULT, 21)
-            ),
-            new TicketTypeRequestWrapper(
-                1L,
-                new TicketTypeRequest(TicketTypeRequest.Type.ADULT, 10),
-                new TicketTypeRequest(TicketTypeRequest.Type.CHILD, 5),
-                new TicketTypeRequest(TicketTypeRequest.Type.INFANT, 6)
+                new TicketTypeRequest(TicketTypeRequest.Type.ADULT, -1)
             )
         );
     }

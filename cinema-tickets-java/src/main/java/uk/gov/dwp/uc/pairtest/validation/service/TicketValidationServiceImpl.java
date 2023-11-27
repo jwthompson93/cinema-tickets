@@ -6,22 +6,18 @@ package uk.gov.dwp.uc.pairtest.validation.service;
 
 import java.util.function.Predicate;
 import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequestWrapper;
-import uk.gov.dwp.uc.pairtest.validation.predicate.ticket.AccountIdLessZeroOrLessPredicate;
-import uk.gov.dwp.uc.pairtest.validation.predicate.ticket.AdultMustAccompanyChildOrInfantPredicate;
-import uk.gov.dwp.uc.pairtest.validation.predicate.ticket.InfantsMustNotOutnumberAdultsPredicate;
-import uk.gov.dwp.uc.pairtest.validation.predicate.ticket.NoTicketsSubmittedPredicate;
-import uk.gov.dwp.uc.pairtest.validation.predicate.ticket.TicketsLessThanTwentyPredicate;
+import uk.gov.dwp.uc.pairtest.validation.predicate.ticket.*;
 
 /**
  *
  * @author James Thompson
  */
-public class TicketTypeValidationServiceImpl implements TicketTypeValidationService {
+public class TicketValidationServiceImpl implements TicketValidationService {
     
     private Predicate<TicketTypeRequestWrapper>[] checks = new Predicate[] {
-        new AccountIdLessZeroOrLessPredicate(),
-        new NoTicketsSubmittedPredicate(),
-        new TicketsLessThanTwentyPredicate(),
+        new AccountIdMoreThanZeroPredicate(),
+        new AtLeastOneTicketSubmittedPredicate(),
+        new TicketsTwentyOrLessPredicate(),
         new AdultMustAccompanyChildOrInfantPredicate(),
         new InfantsMustNotOutnumberAdultsPredicate()
     };

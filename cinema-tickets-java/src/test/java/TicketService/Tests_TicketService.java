@@ -13,7 +13,7 @@ import uk.gov.dwp.uc.pairtest.TicketService;
 import uk.gov.dwp.uc.pairtest.TicketServiceImpl;
 import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest;
 import uk.gov.dwp.uc.pairtest.exception.InvalidPurchaseException;
-import uk.gov.dwp.uc.pairtest.validation.service.TicketTypeValidationServiceImpl;
+import uk.gov.dwp.uc.pairtest.validation.service.TicketValidationServiceImpl;
 
 /**
  *
@@ -25,7 +25,7 @@ public class Tests_TicketService {
     
     public Tests_TicketService() {
         ticketService = new TicketServiceImpl(
-            new TicketTypeValidationServiceImpl(), 
+            new TicketValidationServiceImpl(), 
             new TicketPaymentServiceImpl(), 
             new SeatReservationServiceImpl()
         );

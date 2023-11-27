@@ -5,18 +5,18 @@ import thirdparty.seatbooking.SeatReservationService;
 import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest;
 import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequestWrapper;
 import uk.gov.dwp.uc.pairtest.exception.InvalidPurchaseException;
-import uk.gov.dwp.uc.pairtest.validation.service.TicketTypeValidationService;
+import uk.gov.dwp.uc.pairtest.validation.service.TicketValidationService;
 
 public class TicketServiceImpl implements TicketService {
     /**
      * Should only have private methods other than the one below.
      */
-    private final TicketTypeValidationService ticketTypeValidationService;
+    private final TicketValidationService ticketTypeValidationService;
     private final TicketPaymentService ticketPaymentService;
     private final SeatReservationService seatReservationService;
     
     public TicketServiceImpl(
-            TicketTypeValidationService ticketTypeValidationService, 
+            TicketValidationService ticketTypeValidationService, 
             TicketPaymentService ticketPaymentService, 
             SeatReservationService seatReservationService
     ) {
