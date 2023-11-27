@@ -14,13 +14,20 @@ import java.util.stream.Collectors;
  * @author James Thompson
  */
 public class TicketTypeRequestWrapper {
-    private Map<TicketTypeRequest.Type, TicketTypeRequest> ticketTypeRequestMap;
     
-    public TicketTypeRequestWrapper(TicketTypeRequest... ticketTypeRequests) {
+    private final Long accountId;
+    private final Map<TicketTypeRequest.Type, TicketTypeRequest> ticketTypeRequestMap;
+    
+    public TicketTypeRequestWrapper(Long accountId, TicketTypeRequest... ticketTypeRequests) {
+        this.accountId = accountId;
         ticketTypeRequestMap = 
                 Arrays
                 .stream(ticketTypeRequests)
                 .collect(Collectors.toMap(TicketTypeRequest::getTicketType, Function.identity()));
+    }
+    
+    public Long getAccountId() {
+        return accountId;
     }
     
     public Map<TicketTypeRequest.Type, TicketTypeRequest> getTicketTypeRequestMap() {

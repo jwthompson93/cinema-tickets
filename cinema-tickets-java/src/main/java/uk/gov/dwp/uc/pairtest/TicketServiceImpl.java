@@ -27,12 +27,8 @@ public class TicketServiceImpl implements TicketService {
     
     @Override
     public void purchaseTickets(Long accountId, TicketTypeRequest... ticketTypeRequests) throws InvalidPurchaseException {
-        if(accountId > 0) {
-            throw new InvalidPurchaseException("Account not valid");
-        }
-        
         // Create TicketTypeRequest Wrapper Object
-        TicketTypeRequestWrapper ticketTypeRequestWrapper = new TicketTypeRequestWrapper(ticketTypeRequests);
+        TicketTypeRequestWrapper ticketTypeRequestWrapper = new TicketTypeRequestWrapper(accountId, ticketTypeRequests);
         
         // Perform Validation. Throws InvalidPurchaseException if any of the business rules are failed
         ticketTypeValidationService.validate(ticketTypeRequestWrapper);

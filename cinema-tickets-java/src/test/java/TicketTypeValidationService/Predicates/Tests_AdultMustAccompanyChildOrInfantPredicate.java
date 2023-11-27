@@ -20,7 +20,7 @@ public class Tests_AdultMustAccompanyChildOrInfantPredicate {
     }
     
     @ParameterizedTest(name = "Expected: {1}, Actual: {2}")
-    @MethodSource("Tests_AdultMustAccompanyChildOrInfantPredicate_PassesSuccessfully_Arguments")
+    @MethodSource("TestCases.Predicates.AdultMustAccompanyChildOrInfantPredicate_TestCases#PassesSuccessfully_TestCases")
     void Tests_AdultMustAccompanyChildOrInfantPredicate_PassesSuccessfully(
             TicketTypeRequestWrapper ticketTypeRequestWrapper) {
         Assertions.assertTrue(
@@ -28,49 +28,12 @@ public class Tests_AdultMustAccompanyChildOrInfantPredicate {
         );
     }
     
-    static Stream<TicketTypeRequestWrapper> Tests_AdultMustAccompanyChildOrInfantPredicate_PassesSuccessfully_Arguments() {
-        return Stream.of(
-            new TicketTypeRequestWrapper(
-                new TicketTypeRequest(TicketTypeRequest.Type.ADULT, 5)
-            ),
-            new TicketTypeRequestWrapper(
-                new TicketTypeRequest(TicketTypeRequest.Type.ADULT, 5),
-                new TicketTypeRequest(TicketTypeRequest.Type.CHILD, 5)
-            ),
-            new TicketTypeRequestWrapper(
-                new TicketTypeRequest(TicketTypeRequest.Type.ADULT, 5),
-                new TicketTypeRequest(TicketTypeRequest.Type.CHILD, 5),
-                new TicketTypeRequest(TicketTypeRequest.Type.INFANT, 5)
-            ),
-            new TicketTypeRequestWrapper(
-                new TicketTypeRequest(TicketTypeRequest.Type.ADULT, 15),
-                new TicketTypeRequest(TicketTypeRequest.Type.INFANT, 5)
-            )
-        );
-    }
-    
     @ParameterizedTest(name = "Expected: {1}, Actual: {2}")
-    @MethodSource("Tests_AdultMustAccompanyChildOrInfantPredicate_ThrowInvalidPurchaseException_Arguments")
+    @MethodSource("TestCases.Predicates.AdultMustAccompanyChildOrInfantPredicate_TestCases#ThrowInvalidPurchaseException_TestCases")
     void Tests_AdultMustAccompanyChildOrInfantPredicate_ThrowInvalidPurchaseException(
             TicketTypeRequestWrapper ticketTypeRequestWrapper) {
         Assertions.assertThrows(InvalidPurchaseException.class, () -> {
             predicate.test(ticketTypeRequestWrapper);
         });
-    }
-    
-    static Stream<TicketTypeRequestWrapper> Tests_AdultMustAccompanyChildOrInfantPredicate_ThrowInvalidPurchaseException_Arguments() {
-        return Stream.of(
-            new TicketTypeRequestWrapper(),
-            new TicketTypeRequestWrapper(
-                new TicketTypeRequest(TicketTypeRequest.Type.CHILD, 5)
-            ),
-            new TicketTypeRequestWrapper(
-                new TicketTypeRequest(TicketTypeRequest.Type.INFANT, 5)
-            ),
-            new TicketTypeRequestWrapper(
-                new TicketTypeRequest(TicketTypeRequest.Type.CHILD, 10),
-                new TicketTypeRequest(TicketTypeRequest.Type.INFANT, 5)
-            )
-        );
     }
 }
