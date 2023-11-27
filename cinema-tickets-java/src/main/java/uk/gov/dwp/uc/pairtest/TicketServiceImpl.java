@@ -33,9 +33,9 @@ public class TicketServiceImpl implements TicketService {
         // Perform Validation. Throws InvalidPurchaseException if any of the business rules are failed
         ticketTypeValidationService.validate(ticketTypeRequestWrapper);
         // Reserves Tickets
-        ticketPaymentService.makePayment(accountId, ticketTypeRequestWrapper.GetTotalTicketPrice());
+        ticketPaymentService.makePayment(accountId, ticketTypeRequestWrapper.getTotalTicketPrice());
         // Reserves Seats
-        seatReservationService.reserveSeat(accountId, ticketTypeRequestWrapper.GetTotalRequiredSeats());
+        seatReservationService.reserveSeat(accountId, ticketTypeRequestWrapper.getTotalRequiredSeats());
     }
 
 }

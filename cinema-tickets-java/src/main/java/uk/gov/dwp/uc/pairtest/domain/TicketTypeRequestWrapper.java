@@ -34,7 +34,7 @@ public class TicketTypeRequestWrapper {
         return ticketTypeRequestMap;
     }
     
-    public int GetTotalTickets() {
+    public int getTotalTickets() {
         return ticketTypeRequestMap.entrySet()
                 .stream()
                 .mapToInt((request) -> 
@@ -43,7 +43,7 @@ public class TicketTypeRequestWrapper {
                 .sum();
     }
     
-    public int GetTotalTicketPrice() {
+    public int getTotalTicketPrice() {
         return ticketTypeRequestMap.entrySet()
                 .stream()
                 .mapToInt((request) -> 
@@ -52,7 +52,7 @@ public class TicketTypeRequestWrapper {
                 .sum();
     }
     
-    public int GetTotalRequiredSeats() {
+    public int getTotalRequiredSeats() {
         return ticketTypeRequestMap.entrySet()
                 .stream()
                 .filter((request) -> 
