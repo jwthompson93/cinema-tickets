@@ -11,18 +11,18 @@ import uk.gov.dwp.uc.pairtest.validation.AbstractTicketTypeRequestWrapperPredica
  *
  * @author James Thompson
  */
-public class AccountIdLessZeroOrLessPredicate extends AbstractTicketTypeRequestWrapperPredicate{
+public class TicketsTwentyOrLessPredicate extends AbstractTicketTypeRequestWrapperPredicate{
 
     @Override
     public boolean test(TicketTypeRequestWrapper ticketTypeRequestWrapper) {
         return this.validate(
             ticketTypeRequestWrapper,
-            "Account ID not valid"
+            "Cannot order more than 20 tickets"
         );
     }
 
     @Override
     protected boolean condition(TicketTypeRequestWrapper ticketTypeRequestWrapper) {
-        return ticketTypeRequestWrapper.getAccountId() > 0L;
+        return ticketTypeRequestWrapper.GetTotalTickets() <= 20;
     }
 }

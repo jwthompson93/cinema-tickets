@@ -11,7 +11,7 @@ import uk.gov.dwp.uc.pairtest.validation.AbstractTicketTypeRequestWrapperPredica
  *
  * @author James Thompson
  */
-public class NoTicketsSubmittedPredicate extends AbstractTicketTypeRequestWrapperPredicate{
+public class AtLeastOneTicketSubmittedPredicate extends AbstractTicketTypeRequestWrapperPredicate{
 
     @Override
     public boolean test(TicketTypeRequestWrapper ticketTypeRequestWrapper) {
