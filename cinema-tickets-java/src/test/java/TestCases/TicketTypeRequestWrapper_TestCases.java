@@ -23,7 +23,7 @@ public class TicketTypeRequestWrapper_TestCases {
         Expected Tickets - Integer
     */
     
-    public static Stream<Arguments> TicketTypeRequestWrapper_TestCases() {
+    public static Stream<Arguments> Method_TestCases() {
         return Stream.of(
             Arguments.of(
                 new TicketTypeRequestWrapper(1L),

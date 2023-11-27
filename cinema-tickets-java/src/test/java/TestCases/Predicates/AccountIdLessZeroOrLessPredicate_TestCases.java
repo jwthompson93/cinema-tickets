@@ -35,11 +35,15 @@ public class AccountIdLessZeroOrLessPredicate_TestCases {
         return Stream.of(
             new TicketTypeRequestWrapper(
                 0L, 
-                new TicketTypeRequest[1]
+                new TicketTypeRequest[] {
+                    new TicketTypeRequest(TicketTypeRequest.Type.ADULT, 1)
+                }
             ),
             new TicketTypeRequestWrapper(
                 -1L, 
-                new TicketTypeRequest[1]
+                new TicketTypeRequest[] {
+                    new TicketTypeRequest(TicketTypeRequest.Type.ADULT, 1)
+                }
             )
         );
     }

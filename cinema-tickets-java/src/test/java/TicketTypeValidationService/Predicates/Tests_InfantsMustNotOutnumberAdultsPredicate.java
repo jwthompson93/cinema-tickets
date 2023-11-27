@@ -7,7 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequestWrapper;
 import uk.gov.dwp.uc.pairtest.exception.InvalidPurchaseException;
-import uk.gov.dwp.uc.pairtest.validation.ticket.InfantsMustNotOutnumberAdultsPredicate;
+import uk.gov.dwp.uc.pairtest.validation.predicate.ticket.InfantsMustNotOutnumberAdultsPredicate;
 
 public class Tests_InfantsMustNotOutnumberAdultsPredicate {
     

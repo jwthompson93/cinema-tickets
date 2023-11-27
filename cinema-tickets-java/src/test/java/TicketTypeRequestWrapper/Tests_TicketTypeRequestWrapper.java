@@ -9,9 +9,8 @@ import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequestWrapper;
 
 @DisplayName("A Test Class for testing methods in the TicketTypeRequestWrapper class")
 public class Tests_TicketTypeRequestWrapper {
-    
     @ParameterizedTest(name = "Expected: {1}, Actual: {2}")
-    @MethodSource("TestCases.TicketTypeRequestWrapper_TestCases#TicketTypeRequestWrapper_TestCases")
+    @MethodSource("TestCases.TicketTypeRequestWrapper_TestCases#Method_TestCases")
     void Test_GetTotalTicketPrice(
             TicketTypeRequestWrapper ticketTypeRequestWrapper, 
             Integer expectedCost, 
@@ -22,7 +21,7 @@ public class Tests_TicketTypeRequestWrapper {
     }
     
     @ParameterizedTest(name = "Expected: {1}, Actual: {2}")
-    @MethodSource("TestCases.TicketTypeRequestWrapper_TestCases#TicketTypeRequestWrapper_TestCases")
+    @MethodSource("TestCases.TicketTypeRequestWrapper_TestCases#Method_TestCases")
     void Test_GetRequiredSeats(
             TicketTypeRequestWrapper ticketTypeRequestWrapper, 
             Integer expectedCost, 
@@ -33,7 +32,7 @@ public class Tests_TicketTypeRequestWrapper {
     }
     
     @ParameterizedTest(name = "Expected: {1}, Actual: {2}")
-    @MethodSource("TestCases.TicketTypeRequestWrapper_TestCases#TicketTypeRequestWrapper_TestCases")
+    @MethodSource("TestCases.TicketTypeRequestWrapper_TestCases#Method_TestCases")
     void Test_GetTotalTickets(
             TicketTypeRequestWrapper ticketTypeRequestWrapper, 
             Integer expectedCost, 

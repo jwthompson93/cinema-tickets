@@ -6,11 +6,11 @@ package uk.gov.dwp.uc.pairtest.validation.service;
 
 import java.util.function.Predicate;
 import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequestWrapper;
-import uk.gov.dwp.uc.pairtest.validation.ticket.AccountIdLessZeroOrLessPredicate;
-import uk.gov.dwp.uc.pairtest.validation.ticket.AdultMustAccompanyChildOrInfantPredicate;
-import uk.gov.dwp.uc.pairtest.validation.ticket.InfantsMustNotOutnumberAdultsPredicate;
-import uk.gov.dwp.uc.pairtest.validation.ticket.NoTicketsSubmittedPredicate;
-import uk.gov.dwp.uc.pairtest.validation.ticket.TicketsLessThanTwentyPredicate;
+import uk.gov.dwp.uc.pairtest.validation.predicate.ticket.AccountIdLessZeroOrLessPredicate;
+import uk.gov.dwp.uc.pairtest.validation.predicate.ticket.AdultMustAccompanyChildOrInfantPredicate;
+import uk.gov.dwp.uc.pairtest.validation.predicate.ticket.InfantsMustNotOutnumberAdultsPredicate;
+import uk.gov.dwp.uc.pairtest.validation.predicate.ticket.NoTicketsSubmittedPredicate;
+import uk.gov.dwp.uc.pairtest.validation.predicate.ticket.TicketsLessThanTwentyPredicate;
 
 /**
  *

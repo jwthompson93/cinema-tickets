@@ -2,14 +2,12 @@ package TicketTypeValidationService.Predicates;
 
 
 import java.util.function.Predicate;
-import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest;
 import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequestWrapper;
 import uk.gov.dwp.uc.pairtest.exception.InvalidPurchaseException;
-import uk.gov.dwp.uc.pairtest.validation.ticket.TicketsLessThanTwentyPredicate;
+import uk.gov.dwp.uc.pairtest.validation.predicate.ticket.TicketsLessThanTwentyPredicate;
 
 public class Tests_TicketsLessThanTwentyPredicate {
     
