@@ -23,6 +23,6 @@ public class TicketsTwentyOrLessPredicate extends AbstractTicketTypeRequestWrapp
 
     @Override
     protected boolean condition(TicketTypeRequestWrapper ticketTypeRequestWrapper) {
-        return ticketTypeRequestWrapper.GetTotalTickets() <= 20;
+        return ticketTypeRequestWrapper.getTotalTickets() <= 20;
     }
 }

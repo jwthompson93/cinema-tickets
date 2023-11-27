@@ -23,6 +23,6 @@ public class AtLeastOneTicketSubmittedPredicate extends AbstractTicketTypeReques
 
     @Override
     protected boolean condition(TicketTypeRequestWrapper ticketTypeRequestWrapper) {
-        return ticketTypeRequestWrapper.GetTotalTickets() > 0;
+        return ticketTypeRequestWrapper.getTotalTickets() > 0;
     }
 }

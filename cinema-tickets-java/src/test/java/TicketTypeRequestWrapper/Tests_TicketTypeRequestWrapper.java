@@ -17,7 +17,7 @@ public class Tests_TicketTypeRequestWrapper {
             Integer expectedSeats,
             Integer expectedTickets
     ) {
-        Assertions.assertEquals(expectedCost, ticketTypeRequestWrapper.GetTotalTicketPrice());
+        Assertions.assertEquals(expectedCost, ticketTypeRequestWrapper.getTotalTicketPrice());
     }
     
     @ParameterizedTest(name = "Expected: {1}, Actual: {2}")
@@ -28,7 +28,7 @@ public class Tests_TicketTypeRequestWrapper {
             Integer expectedSeats,
             Integer expectedTickets
     ) {
-        Assertions.assertEquals(expectedSeats, ticketTypeRequestWrapper.GetTotalRequiredSeats());
+        Assertions.assertEquals(expectedSeats, ticketTypeRequestWrapper.getTotalRequiredSeats());
     }
     
     @ParameterizedTest(name = "Expected: {1}, Actual: {2}")
@@ -39,6 +39,6 @@ public class Tests_TicketTypeRequestWrapper {
             Integer expectedSeats,
             Integer expectedTickets
     ) {
-        Assertions.assertEquals(expectedTickets, ticketTypeRequestWrapper.GetTotalTickets());
+        Assertions.assertEquals(expectedTickets, ticketTypeRequestWrapper.getTotalTickets());
     }
 }
