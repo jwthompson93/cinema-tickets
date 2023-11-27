@@ -61,7 +61,6 @@ public class Tests_InfantsMustNotOutnumberAdultsPredicate {
     
     static Stream<TicketTypeRequestWrapper> Tests_InfantsMustNotOutnumberAdultsPredicate_ThrowInvalidPurchaseException_Arguments() {
         return Stream.of(
-            new TicketTypeRequestWrapper(),
             new TicketTypeRequestWrapper(
                 new TicketTypeRequest(TicketTypeRequest.Type.ADULT, 5),
                 new TicketTypeRequest(TicketTypeRequest.Type.INFANT, 6)

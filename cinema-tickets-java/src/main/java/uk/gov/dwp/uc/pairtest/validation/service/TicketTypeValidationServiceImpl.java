@@ -18,8 +18,8 @@ public class TicketTypeValidationServiceImpl implements TicketTypeValidationServ
     
     private Predicate<TicketTypeRequestWrapper>[] checks = new Predicate[] {
         new TicketsLessThanTwentyPredicate(),
-        new InfantsMustNotOutnumberAdultsPredicate(),
-        new AdultMustAccompanyChildOrInfantPredicate()
+        new AdultMustAccompanyChildOrInfantPredicate(),
+        new InfantsMustNotOutnumberAdultsPredicate()
     };
 
     @Override

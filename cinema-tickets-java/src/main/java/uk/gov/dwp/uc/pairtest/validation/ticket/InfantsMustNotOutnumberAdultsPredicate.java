@@ -31,9 +31,11 @@ public class InfantsMustNotOutnumberAdultsPredicate extends AbstractTicketTypeRe
             {
                 return true;
             }
+            
+            return false;
         }
         
-        return false;
+        return true;
     }
     
 }
